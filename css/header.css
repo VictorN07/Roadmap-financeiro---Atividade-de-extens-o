@@ -1,0 +1,92 @@
+/* --- ESTILIZAÇÃO DO HEADER GERAL --- */
+header {
+    width: 100%;
+    position: absolute; /* Faz o menu flutuar por cima da imagem de fundo */
+    top: 0;
+    left: 0;
+    z-index: 10; /* Garante que o menu fique sempre na frente do wallpaper */
+    background: linear-gradient(to bottom, rgba(9, 9, 11, 0.8), rgba(0, 0, 0, 0)); /* Sombra escura sutil no topo para dar leitura */
+    padding: 20px 0;
+}
+
+/* --- CONTAINER DO MENU (Alinhamento) --- */
+.headerPg-menu {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* Joga o Título para a esquerda e os Links para a direita */
+    align-items: center;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+/* --- LOGO / TÍTULO "Roadmap finanças" --- */
+.headerPg-menu h2 {
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 0.5px;
+    /* Efeito de brilho roxo sutil na logo */
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.5); 
+}
+
+/* --- LISTA DE LINKS --- */
+.headerPg-menu-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px; /* Espaçamento elegante entre um link e outro */
+}
+
+/* --- ESTILIZAÇÃO DOS LINKS --- */
+.menu-list-link a {
+    color: #e4e4e7; /* Cor cinza claro para não brigar com a logo */
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    padding: 6px 0;
+    transition: color 0.3s ease;
+}
+
+/* Efeito ao passar o mouse: o texto acende em roxo */
+.menu-list-link a:hover {
+    color: #a855f7; /* Roxo vibrante */
+}
+
+/* --- 🌟 O TOQUE FINAL: LINHA ANIMADA DEBAIXO DO LINK 🌟 --- */
+.menu-list-link a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0; /* Começa invisível */
+    height: 2px;
+    background-color: #a855f7; /* Linha roxa */
+    transition: width 0.3s ease; /* Efeito de abrir a linha de lado */
+}
+
+/* Quando passa o mouse, a linha expande até 100% da largura do texto */
+.menu-list-link a:hover::after {
+    width: 100%;
+}
+
+
+/* --- 📱 RESPONSIVIDADE PARA O CELULAR --- */
+@media (max-width: 768px) {
+    .headerPg-menu {
+        flex-direction: column; /* No celular, joga a logo em cima e os links embaixo */
+        gap: 15px;
+        padding: 0 20px;
+    }
+    
+    .headerPg-menu-list {
+        gap: 20px;
+    }
+    
+    .headerPg-menu h2 {
+        font-size: 1.2rem;
+    }
+}

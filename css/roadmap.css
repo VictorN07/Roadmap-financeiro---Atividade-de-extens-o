@@ -1,0 +1,151 @@
+.roadmap-section{
+    position: relative;
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 20px 0;
+}
+
+.progress-line-container {
+    position: absolute;
+    left: 50%;
+    top: 30px;      /* Começa alinhado com o primeiro círculo */
+    bottom: 30px;   /* Termina alinhado com o último círculo */
+    width: 6px;     /* Grossura da linha vertical */
+    transform: translateX(-50%); /* Garante o centro exato do eixo X */
+    z-index: 1;     /* Fica atrás do círculo (que tem z-index: 2) */
+}
+
+/* --- LINHA DE FUNDO (Apagada / Cinza Escuro) --- */
+.progress-line-bg {
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-gray); /* Se não usar variáveis, coloque #3f3f46 */
+    border-radius: 3px;
+}
+
+/* --- LINHA ATIVA (Roxa / Dinâmica via JavaScript) --- */
+.progress-line-active {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 0%; /* O JavaScript vai alterar isso de 0% a 100% conforme os cliques */
+    background: linear-gradient(to bottom, var(--dark-purple), var(--purple)); /* Ou #4c1d95 e #a855f7 */
+    border-radius: 3px;
+    transition: height 0.5s ease-in-out; /* Efeito suave da linha descendo */
+    box-shadow: 0 0 12px var(--purple); /* Efeito neon brilhante na linha ativa */
+}
+
+/* --- CONFIGURAÇÃO DA LISTA PAI --- */
+.steps-list {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 100%;
+}
+
+/* --- CONFIGURAÇÃO DE CADA LINHA (PASSO) --- */
+.step-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin-bottom: 80px; /* Espaço vertical confortável entre os passos */
+}
+
+
+.step-content-card, 
+.explanation-box {
+    width: 44%; 
+    box-sizing: border-box;
+    padding: 50px;
+    box-shadow: 0px 5px 20px 0px var(--dark-purple);
+}
+
+/* --- CÍRCULO NUMÉRICO CENTRALIZADO --- */
+.step-number-circle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Força o centro perfeito no eixo X e Y */
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: #18181b; /* Troque pela cor da sua paleta se preferir */
+    border: 3px solid #3f3f46; 
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.step-item.completed .step-number-circle {
+    background-color: #a855f7;
+    border-color: #a855f7;
+    box-shadow: 0 0 12px #a855f7;
+}
+
+/* --- AJUSTE DOS VIDEOS DENTRO DOS CARDS --- */
+.video-link {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.video-thumbnail {
+    width: 100%; /* Faz a imagem ocupar o card todo elegantemente */
+    border-radius: 8px;
+    display: block;
+}
+
+.explanation-box p {
+    font-size: 1.3rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* --- 🔀 ALINHAMENTO AUTOMÁTICO BASEADO NO SEU HTML --- */
+
+/* Nos passos 1, 3, 5, 7: o Card vai pra esquerda e o Texto pra direita */
+.step-item:nth-child(odd) {
+    justify-content: space-between;
+}
+
+/* Nos passos 2, 4, 6: o Texto vai pra esquerda e o Card pra direita */
+.step-item:nth-child(even) {
+    justify-content: space-between;
+}
+
+
+/* --- 📱 RESPONSIVIDADE (CELULAR) --- 
+   Seu layout alternado vai virar uma lista reta perfeita no celular */
+@media (max-width: 768px) {
+    .step-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 60px; /* Abre espaço para o círculo na esquerda */
+        box-sizing: border-box;
+    }
+
+    .step-content-card, 
+    .explanation-box {
+        width: 100%; /* Ocupam a tela toda do celular */
+        margin-bottom: 15px;
+    }
+
+    .step-number-circle {
+        left: 20px;
+        top: 25px;
+        transform: translateX(-50%); /* Alinha na lateral esquerda do celular */
+    }
+
+    .progress-line-container {
+        left: 20px; /* Alinha exatamente atrás do círculo que também mudou de lugar */
+        transform: none;
+    }
+}

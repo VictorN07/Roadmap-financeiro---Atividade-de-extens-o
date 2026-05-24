@@ -1,0 +1,43 @@
+@import url(header.css);
+@import url(about.css);
+@import url(roadmap.css);
+@import url(footer.css);
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
+
+:root{
+    --black: #09090b;
+    --light-black: #18181b;
+
+    --dark-purple: #4c1d95;
+    --purple: #a855f7;
+    --light-purple: #e9d5ff;
+
+    --dark-gray: #3f3f46;
+    --gray: #71717a;
+
+    --off-white: #e4e4e7;
+    --white: #ffffff;
+
+    --font-text: 'Inter';
+}
+
+* {
+    color: #ffffff;
+    font-family: var(--font-text);
+}
+
+html{
+    scroll-behavior:smooth;
+    width: auto;
+    height: auto;
+}
+
+body{
+    background-color:  var(--black);
+    width: auto;
+    height: auto;
+}
+
+footer{
+    position: top;
+}
